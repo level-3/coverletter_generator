@@ -60,9 +60,11 @@ if resume_file and job_description_file:
     with t_jobdescription:
         st.subheader("Job Description")
         st.text_area("Job Description Text", job_description_text, height=600)
+    with st.sidebar:
+        generate_cover_letter = st.button("Generate Cover Letter")
 
 
-    if st.button("Generate Cover Letter"):
+    if generate_cover_letter:
 
         cover_letter = openai_generate_cover_letter(resume_text, job_description_text)
       
