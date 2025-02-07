@@ -45,16 +45,8 @@ with st.sidebar:
     st.write("Upload your resume and job description to generate a personalized cover letter.")
     openai_api_key = st.text_input("OpenAI API Key", key="openai_api_key", type="password")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-    gemini_api_key = st.text_input("Gemini API Key", key="gemini_api_key", type="password")
-    "[Get an Gemini API key](https://ai.google.dev/gemini-api/docs/api-key)"
-    anthropic_api_key = st.text_input("Anthropic API Key", key="anthropic_api_key", type="password")
-    "[Get an Anthropic API key](https://console.anthropic.com/settings/keys)"
-    options = ["OpenAI", "Google", "Anthropic"]
-    selection = st.segmented_control("llm", options, selection_mode="single")
     resume_file = st.file_uploader("Upload your resume (txt)", type="txt")
     job_description_file = st.file_uploader("Upload the job description (txt)", type="txt")
-
-
 
 
 if resume_file and job_description_file:
@@ -88,5 +80,5 @@ if resume_file and job_description_file:
             st.subheader("Cover Letter")
             st.text_area("Cover Letter Text", cover_letter, height=300)
         
-
-        st.success("Cover letter saved to cover_letter.txt")
+        with st.sidebar:
+            st.success("Cover letter saved to cover_letter.txt")
