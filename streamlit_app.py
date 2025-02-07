@@ -37,7 +37,7 @@ def openai_generate_cover_letter(resume_text, job_description_text):
     return chat_completion.choices[0].message.content
 
 
-t_resume, t_jobdescription, t_coverletter = st.tabs(["Resume", "Job Description", "Cover Letter"])
+t_coverletter, t_resume, t_jobdescription  = st.tabs(["Cover Letter","Resume", "Job Description" ])
 
 
 with st.sidebar:
@@ -56,21 +56,11 @@ if resume_file and job_description_file:
     
     with t_resume:
         st.subheader("Resume")
-        st.text_area("Resume Text", resume_text, height=300)
+        st.text_area("Resume Text", resume_text, height=600)
     with t_jobdescription:
         st.subheader("Job Description")
-        st.text_area("Job Description Text", job_description_text, height=300)
+        st.text_area("Job Description Text", job_description_text, height=600)
 
-
-    llm_to_use = st.radio(
-        "Choose LLM to use",
-        ["ChatGPT", "Gemini", "Claude"],
-        captions=[
-            "OpenAI (recommended)",
-            "Google",
-            "Anthropic",
-        ],
-    )
 
     if st.button("Generate Cover Letter"):
 
@@ -78,7 +68,7 @@ if resume_file and job_description_file:
       
         with t_coverletter:
             st.subheader("Cover Letter")
-            st.text_area("Cover Letter Text", cover_letter, height=300)
+            st.text_area("Cover Letter Text", cover_letter, height=600)
         
         with st.sidebar:
-            st.success("Cover letter saved to cover_letter.txt")
+            st.success("Cover letter created")
