@@ -110,7 +110,7 @@ with st.sidebar:
     anthropic_api_key = st.text_input("Anthropic API Key", key="anthropic_api_key", type="password")
     "[Get an Anthropic API key](https://console.anthropic.com/settings/keys)"
     options = ["OpenAI", "Google", "Anthropic"]
-    selection = st.segmented_control("llm", options, selection_mode="multi")
+    selection = st.segmented_control("llm", options, selection_mode="single")
     resume_file = st.file_uploader("Upload your resume (txt)", type="txt")
     job_description_file = st.file_uploader("Upload the job description (txt)", type="txt")
 
